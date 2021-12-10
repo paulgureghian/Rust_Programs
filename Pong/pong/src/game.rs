@@ -28,6 +28,7 @@ pub struct Game {
     score: i32,
 }
 
+impl Game {
 pub fn new(width: i32, height: i32) -> Self {
     Self {
         player: Paddle::new(width as f64 - 3.0, MARGIN_TOP + 5.0, 5),
@@ -74,7 +75,7 @@ pub fn draw(&self, con: &Context, g: &mut G2d, cache: &mut Glyphs) {
         g,
     );
 
-    draw_rectangle(BORDER_COLOR, 0.0, MARGIN_TOP, 1, self.height, 1, con, g);
+    draw_rectangle(BORDER_COLOR, 0.0, MARGIN_TOP, 1, self.height, con, g);
     draw_rectangle(
         BORDER_COLOR,
         (self.width - 1) as f64,
@@ -149,9 +150,9 @@ fn update_ball(&mut self, delta_time: f64) {
 
     if next_x.floor() >= (self.player.get_position_x() - 1.0)
         && next_y >= self.player.get_position_y()
-        && next_y <= self.get_position_y() + self.player.get_size() as f64
-    {
-        let paddle_center = self.get_position_y() + (self.player.get_size() / 2) as f64;
+        && next_y <= self.player.get_position_y() + self.player.get_size() as f64
+    {                                                            
+        let paddle_center = self.player.get_position_y() + (self.player.get_size() / 2) as f64;
         let d = paddle_center as f64 - next_y;
         self.ball.flip_velocity_x();
         self.ball.increase_y(d * -20.0);
@@ -213,4 +214,5 @@ fn restart(&mut self) {
     self.ball.set_velocity(100.0, 0.0);
     self.ball.set_position(6.0, (self.height / 2) as f64);
     self.game_over = false;
+}
 }

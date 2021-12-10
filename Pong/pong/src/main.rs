@@ -13,7 +13,7 @@ use piston_window::{
 use draw::to_coord;
 use game::Game;
 
-const BACK_COLOR: Color = [0.0, 0.0, 0.0 1.0];
+const BACK_COLOR: Color = [0.0, 0.0, 0.0, 1.0];
 
 fn main() {
     let (width, height) = (50, 55);

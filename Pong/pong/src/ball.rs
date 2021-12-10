@@ -1,3 +1,15 @@
+use crate::draw::draw_block;
+use piston_window::{types::Color, Context, G2d};
+
+const BALL_COLOR: Color = [1.0, 1.0, 1.0, 1.0];
+
+pub struct Ball {
+    x: f64,
+    y: f64,
+    vx: f64,
+    vy: f64,
+}
+
 impl Ball {
     pub fn new(x: f64, y: f64, vx: f64, vy: f64) -> Self {
         Self { x, y, vx, vy }
