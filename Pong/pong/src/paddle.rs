@@ -41,7 +41,7 @@ impl Paddle {
         let mut new_y: Option<f64> = None;
 
         if let Some(dir) = dir {
-            if dir == Direction::Up {}
+            if dir == Direction::Up {
                 let next_y = self.y - 1.0;
                 if next_y > min_y {
                     new_y = Some(next_y);
